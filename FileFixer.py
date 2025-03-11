@@ -98,7 +98,7 @@ def autoFix():
 
     if not os.path.exists(target_path):
         print("❌ Error: File not found.")
-        return
+        return title()
 
     # Read first 16 bytes
     with open(target_path, "rb") as f:
@@ -109,7 +109,7 @@ def autoFix():
         if file_bytes.startswith(magic):
             print(f"✔ Exact match found: {file_type}")
             apply_fix(target_path, magic, file_type)
-            return
+            return title()
 
     # If no exact match, find the closest match
     best_match = None
