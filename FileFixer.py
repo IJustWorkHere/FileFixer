@@ -80,10 +80,11 @@ def manual_fix():
     user_type_request = input("Enter the desired file type (case insensitive): ").strip().upper()
 
     # Find matching magic bytes
-    if user_type_request in known_magic_bytes:
-        return apply_fix(target_path, known_magic_bytes[user_type_request], user_type_request)
+    if user_type_request not in known_magic_bytes:
+        print("❌ Unknown file type. Try again.")
+
+    apply_fix(target_path, known_magic_bytes[user_type_request], user_type_request)
     
-    print("❌ Unknown file type. Try again.")
 
 
 def auto_fix():
